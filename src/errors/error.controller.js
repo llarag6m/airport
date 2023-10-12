@@ -7,7 +7,19 @@ const handleCastError22001 = () =>
 
 const handleCastError23505 = () =>
   new AppError('Duplicate field value: please use another value', 400)
- 
+
+const handleCastError22P02 = () =>{
+  new AppError('Invalid data type in database', 400);
+}  
+
+const handleJWTExpireError = () =>{
+  new AppError("you token has expired Inicia sesion de nuevo!", 401)
+}
+
+const handleJWTError = () =>{
+  new AppError('Invalid token, Prueba de nuevo',401)
+}
+
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -51,7 +63,10 @@ export const globalErrorHandler = (err, req, res, next) => {
   if(envs.NODE_ENV === 'production'){
     let error = err;
     if(err.parent?.code === '22001') error = handleCastError22001();
-    if(err.parent?.code === '23505') error = handleCastError23505()
+    if(err.parent?.code === '23505') error = handleCastError23505();
+    if (err.parent?.code === '22P02') error = handleCastError22P02();
+    if(err.name === 'TokenExpiredError') error = handleJWTExpireError();
+    if (err.name === 'TokenExpiredError') error =  handleJWTError();
 
     sendErrorProd(error, res)
   }

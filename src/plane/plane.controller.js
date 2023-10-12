@@ -25,8 +25,8 @@ export const findAllPlanes = catchAsync(async(req, res) =>{
 })
 
 export const findOnePlane = catchAsync(async(req, res) =>{
-    const { plane } = req
-    return res.status(200).json(plane)
+    const { id } = req.params;
+    return res.status(200).findOne(id)
 })
 
 export const updatePlane = catchAsync(async(req, res) =>{
