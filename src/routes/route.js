@@ -10,6 +10,7 @@ export const router = Router()
 
 // lo que coloque aca se va a concatenar con /api/v1
 router.use('/users', authRouter)
+
 router.use(protect)
 router.use('/passengers', passengerRouter)
 router.use('/city', cityRouter)

@@ -8,6 +8,7 @@ import { AuthService } from "./auth.services.js";
 const authService = new AuthService()
 
 export const protect = catchAsync(async(req,res,next) => {
+  console.log('entre')
 
   //1. obtener el token
   let token;
@@ -54,6 +55,7 @@ export const protect = catchAsync(async(req,res,next) => {
     )
   }
  }
+
 
  //6. adjuntar el usuario en session, el usuario en session es el usuario dueño del token
  req.sessionUser = user;

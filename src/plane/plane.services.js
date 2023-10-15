@@ -2,7 +2,7 @@ import Plane from "./plane.model.js";
 
 export class PlaneService {
 
-    async findOnePlane(id){
+    async findOne(id){
         return await Plane.findOne({
           where: {
             id,
@@ -11,7 +11,7 @@ export class PlaneService {
         })
       }
     
-      async findAllPlane(){
+      async findAll(){
         return await Plane.findAll({
           where: {
             status: true
@@ -19,12 +19,12 @@ export class PlaneService {
         })  
       }
 
-    async createPlane(data){
-        return await Plane.create(data)
+    async createPlane(PlaneData){
+        return await Plane.create(PlaneData)
       }
 
-    async updatePlane(plane, data){
-        return await plane.update(data)
+    async updatePlane(plane, PlaneData){
+        return await plane.update(PlaneData)
       }
     
     async deletePlane(plane) {

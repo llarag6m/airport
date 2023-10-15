@@ -21,6 +21,7 @@ const handleJWTError = () =>{
 }
 
 const sendErrorDev = (err, res) => {
+  console.log('enasddsdsdsds')
   res.status(err.statusCode).json({
     status: err.status,
     message : err.message,
@@ -52,6 +53,8 @@ const sendErrorProd = async(err,res) => {
 }
 
 export const globalErrorHandler = (err, req, res, next) => {
+
+  console.log('entre222')
 
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'fail'

@@ -5,6 +5,7 @@ import { PassengerService } from "./passengers.services.js"
 const passengerService = new PassengerService();
 
 export const findAllPassengers = catchAsync(async (req, res, next) => {
+  console.log("paso por aqui")
     const passengers = await passengerService.findAllPassengers()
     return res.json(passengers)
 })

@@ -1,20 +1,33 @@
 import Flight from "./flight.model.js";
+import { Op } from "sequelize";
 
 export class FlightService {
 
+ 
+
     async findOneFlight(id){
+
+      let whereClause = {
+        id: id,
+        status: status
+      }
+
+      if (!status) {
+         whereClause.status ={
+          [Op.in]: ["pending", "inProgress", "done"]
+         }
+      }
         return await Flight.findOne({
-          where: {
-            id,
-            status: true,
-          }
+          where: whereClause
         })
       }
     
       async findAllFlight(){
         return await Flight.findAll({
           where: {
-            status: true
+            status: {
+              [Op.notIn]: ['done','cancelled']
+            }
           }
         })  
       }

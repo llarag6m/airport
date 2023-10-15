@@ -1,6 +1,6 @@
 import { Router }  from 'express'
 import { findAllPassengers,createPassenger,findOnePassenger,updatePassenger,deletePassenger } from './passengers.controller.js';
-import { protect } from '../auth/auth.middleware.js';
+
 
 export const router = Router();
 

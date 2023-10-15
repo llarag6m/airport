@@ -2,17 +2,11 @@ import z from "zod"
 import { extractValidationData } from "../common/utils/extractErrorData.js" 
 
 const flightSchema = z.object({
-    origin_id: z.string().min(8).max(10),
-    destination_id: z.string().min(8).max(10),
-    plane_id: z.string().min(8).max(10),
-    departure_time: z.string({
-        invalid_type_error: "Formato de salida incorrecto",
-        required_error: "Registro de salida requerido"
-      }),
-    check_in: z.string({
-        invalid_type_error: "Registro de formato incorrecto",
-        required_error: "Registro requerido"
-      }),
+    origin_id: z.number(),
+    destination_id: z.number(),
+    plane_id: z.number(),
+    departure_time: z.string(),
+    check_in: z.date().optional(),
     status: z.enum(['pending','inProgress','done','cancelled','delayed']),
 })
 

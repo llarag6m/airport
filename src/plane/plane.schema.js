@@ -2,11 +2,10 @@ import z from "zod"
 import { extractValidationData } from "../common/utils/extractErrorData.js"
 
 const planeSchema = z.object({
-    plane_number: z.string().min(10).max(20),
+    plane_number: z.number(),
     model: z.string().min(100).max(200),
-    max_capacity: z.string().min(1000).max(2000),
+    max_capacity: z.number(),
     arline: z.enum(['AeroGlobe','AeroTronix','VelocityAir','AirQuest','StarLink']),
-    status: z.string().min(10).max(20),
 })
 
 
